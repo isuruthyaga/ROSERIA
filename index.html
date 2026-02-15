@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROSERIA | Exclusive Jewelry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#F9F1D8',
+                            400: '#D4AF37',
+                            600: '#B8860B',
+                            900: '#8B6508',
+                        },
+                        dark: '#0a0a0a',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-zoom {
+            animation: zoomEffect 20s infinite alternate;
+        }
+
+        @keyframes zoomEffect {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-white font-sans antialiased selection:bg-gold-400 selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-serif font-bold tracking-widest text-gold-400">ROSERIA</a>
+
+            <div class="hidden md:flex space-x-8 uppercase text-sm tracking-widest text-gray-300">
+                <a href="index.html" class="hover:text-gold-400 transition-colors">Home</a>
+                <a href="shop.html" class="hover:text-gold-400 transition-colors">Shop</a>
+                <a href="#about" class="hover:text-gold-400 transition-colors">About</a>
+                <a href="contact.html" class="hover:text-gold-400 transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <button class="hover:text-gold-400 transition-colors relative" onclick="toggleCart()">
+                    <i class="fas fa-shopping-bag text-lg"></i>
+                    <span id="cart-count"
+                        class="absolute -top-2 -right-2 bg-gold-600 text-black text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white text-xl" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-black z-40 hidden flex-col justify-center items-center space-y-8 text-xl uppercase tracking-widest">
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-2xl text-gold-400"><i
+                class="fas fa-times"></i></button>
+        <a href="index.html" onclick="toggleMobileMenu()" class="hover:text-gold-400">Home</a>
+        <a href="shop.html" onclick="toggleMobileMenu()" class="hover:text-gold-400">Shop</a>
+        <a href="#about" onclick="toggleMobileMenu()" class="hover:text-gold-400">About</a>
+        <a href="contact.html" onclick="toggleMobileMenu()" class="hover:text-gold-400">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center bg-black overflow-hidden pt-20">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="assets/images/hero-bg.jpg" alt="Luxury Background"
+                class="w-full h-full object-cover opacity-30 hero-zoom">
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
+            <!-- Text Content -->
+            <div class="text-left pt-10 md:pt-0" data-aos="fade-right">
+                <div class="inline-block w-16 h-1 bg-gold-400 mb-6"></div>
+                <p class="text-gold-400 tracking-[0.3em] uppercase mb-4 text-sm font-bold">Exquisite Craftsmanship</p>
+                <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+                    Timeless Elegance <br>
+                    <span class="text-gold-400 italic font-light">Redefined</span>
+                </h1>
+                <p class="text-gray-400 text-lg mb-8 max-w-lg font-light leading-relaxed">
+                    Discover a world where sophistication meets craftsmanship. Each piece tells a story of luxury,
+                    designed for those who appreciate the finer things in life.
+                </p>
+                <div class="flex flex-col md:flex-row gap-4">
+                    <a href="shop.html"
+                        class="px-10 py-4 bg-gold-600 hover:bg-gold-500 text-black font-bold uppercase tracking-widest text-sm transition-all duration-300 text-center">
+                        Shop Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="relative hidden md:block" data-aos="fade-left">
+                <div
+                    class="relative z-10 border border-gray-800 p-2 bg-white/5 backdrop-blur-sm transform rotate-1 hover:rotate-0 transition-all duration-700">
+                    <img src="assets/images/hero-jewelry.jpg" alt="Featured Jewelry"
+                        class="w-full h-[600px] object-cover shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+                <!-- Decorative Elements -->
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-gold-400/10 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-purple-900/20 rounded-full blur-3xl"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Collection -->
+    <section class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-gold-600 tracking-widest uppercase text-sm font-bold">Our Masterpieces</span>
+                <h2 class="text-4xl font-serif text-white mt-2">New Arrivals</h2>
+                <div class="w-24 h-1 bg-gold-400 mx-auto mt-4"></div>
+            </div>
+
+            <!-- Dynamic Product Grid (First 3 items) -->
+            <div id="featured-products" class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Javascript will populate this -->
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="shop.html"
+                    class="inline-block text-white hover:text-gold-400 border-b border-transparent hover:border-gold-400 pb-1 transition-all uppercase tracking-widest text-sm">View
+                    All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative bg-[#0f0f0f]">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1531995811006-35cb42e1a022?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    alt="Craftsmanship"
+                    class="w-full h-auto shadow-2xl border border-gray-800 grayscale hover:grayscale-0 transition-all duration-700">
+            </div>
+            <div class="w-full md:w-1/2">
+                <span class="text-gold-600 tracking-widest uppercase text-sm font-bold">Our Heritage</span>
+                <h2 class="text-4xl font-serif text-white mt-2 mb-6">Crafting Perfection Since 1995</h2>
+                <p class="text-gray-400 leading-relaxed mb-6 font-light">
+                    At <span class="text-gold-400 font-serif">ROSERIA</span>, jewelry is not just an accessory; it is a
+                    statement of legacy and love. Each piece is meticulously handcrafted by our master artisans using
+                    only the finest ethically sourced gemstones and precious metals.
+                </p>
+                <p class="text-gray-400 leading-relaxed mb-8 font-light">
+                    We believe in the beauty of detail. From the initial sketch to the final polish, our process is a
+                    celebration of art.
+                </p>
+                <a href="#"
+                    class="text-white hover:text-gold-400 uppercase tracking-widest text-sm font-bold flex items-center gap-2 group">
+                    Read Our Story <i
+                        class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-16 border-t border-gray-900">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div>
+                <a href="#" class="text-2xl font-serif font-bold tracking-widest text-gold-400 block mb-6">ROSERIA</a>
+                <p class="text-gray-500 text-sm leading-relaxed">Defining luxury in Sri Lanka with timeless jewelry
+                    pieces. Exclusively online.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-serif mb-6 text-gold-100">Quick Links</h4>
+                <ul class="space-y-3 text-gray-400 text-sm uppercase tracking-wide">
+                    <li><a href="index.html" class="hover:text-gold-400 transition-colors">Home</a></li>
+                    <li><a href="shop.html" class="hover:text-gold-400 transition-colors">Shop</a></li>
+                    <li><a href="contact.html" class="hover:text-gold-400 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-serif mb-6 text-gold-100">Contact</h4>
+                <ul class="space-y-3 text-gray-400 text-sm">
+
+                    <li><i class="fas fa-phone text-gold-600 mr-2"></i> +94 77 777 7777</li>
+                    <li><i class="fas fa-envelope text-gold-600 mr-2"></i> info@roseria.lk</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-serif mb-6 text-gold-100">Newsletter</h4>
+                <form class="flex flex-col gap-4">
+                    <input type="email" placeholder="Your Email Address"
+                        class="bg-gray-900 border border-gray-800 px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors text-sm">
+                    <button
+                        class="bg-gold-600 hover:bg-gold-500 text-black font-bold uppercase tracking-widest px-4 py-3 text-xs transition-colors">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="border-t border-gray-900 mt-12 pt-8 text-center text-gray-600 text-xs uppercase tracking-widest">
+            &copy; 2024 Roseria Jewelry. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar (Hidden by default) -->
+    <div id="cart-sidebar"
+        class="fixed inset-y-0 right-0 w-full md:w-96 bg-gray-900 transform translate-x-full transition-transform duration-300 z-50 shadow-2xl border-l border-gray-800 flex flex-col">
+        <div class="p-6 border-b border-gray-800 flex justify-between items-center bg-black">
+            <h2 class="text-xl font-serif text-white">Your Bag</h2>
+            <button onclick="toggleCart()" class="text-gray-400 hover:text-white"><i
+                    class="fas fa-times text-xl"></i></button>
+        </div>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-6">
+            <!-- Cart items will be injected here -->
+            <p class="text-gray-500 text-center mt-10" id="empty-cart-msg">Your bag is empty.</p>
+        </div>
+        <div class="p-6 border-t border-gray-800 bg-black">
+            <div class="flex justify-between items-center mb-6 text-white">
+                <span class="uppercase tracking-widest text-sm">Total</span>
+                <span class="font-serif text-2xl text-gold-400" id="cart-total">Rs 0.00</span>
+            </div>
+            <button onclick="checkout()"
+                class="w-full bg-gold-600 hover:bg-gold-500 text-black font-bold uppercase tracking-widest py-4 transition-colors">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Overlay for cart -->
+    <div id="cart-overlay" onclick="toggleCart()"
+        class="fixed inset-0 bg-black bg-opacity-80 z-40 hidden backdrop-blur-sm"></div>
+
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROSERIA | Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#F9F1D8',
+                            400: '#D4AF37',
+                            600: '#B8860B',
+                            900: '#8B6508',
+                        },
+                        dark: '#0a0a0a',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-dark text-white font-sans antialiased selection:bg-gold-400 selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md shadow-lg border-b border-gray-900" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-serif font-bold tracking-widest text-gold-400">ROSERIA</a>
+
+            <div class="hidden md:flex space-x-8 uppercase text-sm tracking-widest text-gray-300">
+                <a href="index.html" class="hover:text-gold-400 transition-colors">Home</a>
+                <a href="shop.html" class="hover:text-gold-400 transition-colors">Shop</a>
+                <a href="index.html#about" class="hover:text-gold-400 transition-colors">About</a>
+                <a href="contact.html" class="hover:text-gold-400 transition-colors text-gold-400">Contact</a>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white text-xl" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-black z-40 hidden flex-col justify-center items-center space-y-8 text-xl uppercase tracking-widest">
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-2xl text-gold-400"><i
+                class="fas fa-times"></i></button>
+        <a href="index.html" onclick="toggleMobileMenu()" class="hover:text-gold-400">Home</a>
+        <a href="shop.html" onclick="toggleMobileMenu()" class="hover:text-gold-400">Shop</a>
+        <a href="index.html#about" onclick="toggleMobileMenu()" class="hover:text-gold-400">About</a>
+        <a href="contact.html" onclick="toggleMobileMenu()" class="hover:text-gold-400">Contact</a>
+    </div>
+
+    <!-- Contact Header -->
+    <div class="h-[60vh] relative flex items-center justify-center bg-gray-900">
+        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+            alt="Contact Us" class="absolute inset-0 w-full h-full object-cover opacity-30">
+        <div class="relative z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-4">Get In Touch</h1>
+            <p class="text-gold-400 uppercase tracking-widest text-sm">We'd love to hear from you</p>
+        </div>
+    </div>
+
+    <!-- Contact Content -->
+    <section class="py-20 container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <!-- Form -->
+            <div>
+                <h2 class="text-3xl font-serif text-white mb-8">Send a Message</h2>
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input type="text" placeholder="First Name"
+                            class="bg-gray-900 border border-gray-800 p-4 text-white focus:outline-none focus:border-gold-400 w-full">
+                        <input type="text" placeholder="Last Name"
+                            class="bg-gray-900 border border-gray-800 p-4 text-white focus:outline-none focus:border-gold-400 w-full">
+                    </div>
+                    <input type="email" placeholder="Email Address"
+                        class="bg-gray-900 border border-gray-800 p-4 text-white focus:outline-none focus:border-gold-400 w-full">
+                    <input type="text" placeholder="Subject"
+                        class="bg-gray-900 border border-gray-800 p-4 text-white focus:outline-none focus:border-gold-400 w-full">
+                    <textarea rows="5" placeholder="Message"
+                        class="bg-gray-900 border border-gray-800 p-4 text-white focus:outline-none focus:border-gold-400 w-full"></textarea>
+
+                    <button type="submit"
+                        class="bg-gold-600 hover:bg-gold-500 text-black font-bold uppercase tracking-widest px-10 py-4 transition-colors">Send
+                        Message</button>
+                </form>
+            </div>
+
+            <!-- Info -->
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-xl font-serif text-gold-400 mb-4">Online Exclusive</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        We operate exclusively online.<br>
+                        Island-wide delivery available.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-serif text-gold-400 mb-4">Customer Support Hours</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Monday - Saturday: 9:00 AM - 8:00 PM<br>
+                        Sunday: 10:00 AM - 6:00 PM
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-serif text-gold-400 mb-4">Contact Info</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        <i class="fas fa-phone mr-2"></i> +94 77 123 4567<br>
+                        <i class="fas fa-envelope mr-2"></i> boutique@roseria.lk
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white py-12 border-t border-gray-900 text-center text-sm text-gray-600">
+        &copy; 2024 Roseria Jewelry.
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

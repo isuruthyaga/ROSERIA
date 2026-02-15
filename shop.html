@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROSERIA | Shop Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#F9F1D8',
+                            400: '#D4AF37',
+                            600: '#B8860B',
+                            900: '#8B6508',
+                        },
+                        dark: '#0a0a0a',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-dark text-white font-sans antialiased selection:bg-gold-400 selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md shadow-lg border-b border-gray-900" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-serif font-bold tracking-widest text-gold-400">ROSERIA</a>
+
+            <div class="hidden md:flex space-x-8 uppercase text-sm tracking-widest text-gray-300">
+                <a href="index.html" class="hover:text-gold-400 transition-colors">Home</a>
+                <a href="shop.html" class="hover:text-gold-400 transition-colors text-gold-400">Shop</a>
+                <a href="index.html#about" class="hover:text-gold-400 transition-colors">About</a>
+                <a href="contact.html" class="hover:text-gold-400 transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <button class="hover:text-gold-400 transition-colors relative" onclick="toggleCart()">
+                    <i class="fas fa-shopping-bag text-lg"></i>
+                    <span id="cart-count"
+                        class="absolute -top-2 -right-2 bg-gold-600 text-black text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white text-xl" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-black z-40 hidden flex-col justify-center items-center space-y-8 text-xl uppercase tracking-widest">
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-2xl text-gold-400"><i
+                class="fas fa-times"></i></button>
+        <a href="index.html" onclick="toggleMobileMenu()" class="hover:text-gold-400">Home</a>
+        <a href="shop.html" onclick="toggleMobileMenu()" class="hover:text-gold-400">Shop</a>
+        <a href="index.html#about" onclick="toggleMobileMenu()" class="hover:text-gold-400">About</a>
+        <a href="contact.html" onclick="toggleMobileMenu()" class="hover:text-gold-400">Contact</a>
+    </div>
+
+    <!-- Shop Content -->
+    <div class="pt-32 pb-20 container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div>
+                <span class="text-gold-600 tracking-widest uppercase text-xs font-bold">The Collection</span>
+                <h1 class="text-4xl md:text-5xl font-serif text-white mt-2">All Jewelry</h1>
+            </div>
+
+            <!-- Filter / Search -->
+            <div class="flex gap-4 mt-6 md:mt-0">
+                <select id="category-filter" onchange="filterProducts()"
+                    class="bg-gray-900 border border-gray-800 text-white px-4 py-2 uppercase text-xs tracking-widest focus:outline-none focus:border-gold-400">
+                    <option value="all">All Categories</option>
+                    <option value="Rings">Rings</option>
+                    <option value="Necklaces">Necklaces</option>
+                    <option value="Earrings">Earrings</option>
+                    <option value="Watches">Watches</option>
+                    <option value="Bracelets">Bracelets</option>
+                </select>
+                <input type="text" id="search-bar" onkeyup="searchProducts()" placeholder="Search..."
+                    class="bg-gray-900 border border-gray-800 text-white px-4 py-2 text-sm focus:outline-none focus:border-gold-400 w-48">
+            </div>
+        </div>
+
+        <div id="shop-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- Products will be loaded here via JS -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-16 border-t border-gray-900">
+        <div class="container mx-auto px-6 text-center text-gray-500 text-sm">
+            &copy; 2024 Roseria Jewelry. All Rights Reserved. Used for demonstration.
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar"
+        class="fixed inset-y-0 right-0 w-full md:w-96 bg-gray-900 transform translate-x-full transition-transform duration-300 z-50 shadow-2xl border-l border-gray-800 flex flex-col">
+        <div class="p-6 border-b border-gray-800 flex justify-between items-center bg-black">
+            <h2 class="text-xl font-serif text-white">Your Bag</h2>
+            <button onclick="toggleCart()" class="text-gray-400 hover:text-white"><i
+                    class="fas fa-times text-xl"></i></button>
+        </div>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-6">
+            <p class="text-gray-500 text-center mt-10" id="empty-cart-msg">Your bag is empty.</p>
+        </div>
+        <div class="p-6 border-t border-gray-800 bg-black">
+            <div class="flex justify-between items-center mb-6 text-white">
+                <span class="uppercase tracking-widest text-sm">Total</span>
+                <span class="font-serif text-2xl text-gold-400" id="cart-total">Rs 0.00</span>
+            </div>
+            <button onclick="checkout()"
+                class="w-full bg-gold-600 hover:bg-gold-500 text-black font-bold uppercase tracking-widest py-4 transition-colors">Checkout</button>
+        </div>
+    </div>
+
+    <div id="cart-overlay" onclick="toggleCart()"
+        class="fixed inset-0 bg-black bg-opacity-80 z-40 hidden backdrop-blur-sm"></div>
+
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
